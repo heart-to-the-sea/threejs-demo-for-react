@@ -1,6 +1,6 @@
 precision highp float;
-attribute vec3 position;
 /*
+    attribute vec3 position;
     float   gl_PointSize    点渲染模式，点的像素大小    
     vec4    gl_Position     顶点位置坐标
     vec4    gl_FragColor    片元颜色值
@@ -12,11 +12,15 @@ uniform float u_time;
 // 将变量传递给片元着色器
 varying vec3 v_p;
 varying float v_z;
+varying vec3 v_position;
+
+varying vec2 v_uv;
 
 void main() {
-
+  v_position = position;
   vec4 model_position = modelMatrix * vec4(position, 1.0);
   gl_Position = projectionMatrix * viewMatrix * model_position;
+  v_uv=uv;
 
   vec4 view_position = viewMatrix * model_position;
     // 设置点的大小,并且随相机远近放大缩小
