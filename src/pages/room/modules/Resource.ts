@@ -11,4 +11,7 @@ export default class Resource {
         this.axis = new Axis();
         this.shaderBox = new ShaderBox();
     }
+    update(){
+        this.shaderBox.update()
+    }
 }

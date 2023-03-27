@@ -14,16 +14,13 @@ export default class ShaderBox {
     }
     getBox() {
         console.log("init standbox");
-        const geometry = new THREE.PlaneGeometry(
-            10,
-            10,
-            20,
-            20
-        );
+        const geometry = new THREE.PlaneGeometry(10, 10, 20, 20);
         const material = new THREE.ShaderMaterial({
             uniforms: {
                 u_time: { value: 0 },
-                u_texture:{value:new THREE.TextureLoader().load('/img/image.jpg')}
+                u_texture: {
+                    value: new THREE.TextureLoader().load("/img/image.jpg"),
+                },
             },
             fragmentShader: fs,
             vertexShader: vs,
@@ -32,4 +29,5 @@ export default class ShaderBox {
         const mesh = new THREE.Mesh(geometry, material);
         return mesh;
     }
+    update() {}
 }

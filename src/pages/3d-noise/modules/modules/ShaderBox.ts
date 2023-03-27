@@ -39,24 +39,15 @@ export default class ShaderBox {
         }
     }
     getBox(point: THREE.Vector3) {
-        const path = new THREE.CatmullRomCurve3(
-            this.getCurve(point)
-        );
-        const geometry2 = new THREE.TubeGeometry(
-            path,
-            1000,
-            0.005
-        );
-        const mesh = new THREE.Mesh(
-            geometry2,
-            this.material.material
-        );
+        const path = new THREE.CatmullRomCurve3(this.getCurve(point));
+        const geometry2 = new THREE.TubeGeometry(path, 1000, 0.005);
+        const mesh = new THREE.Mesh(geometry2, this.material.material);
         return mesh;
     }
     // 创建曲线路径
     getCurve(start: THREE.Vector3) {
         const scale = 3;
-        const points = [];
+        const points: THREE.Vector3[] = [];
         points.push(start);
         const currentPoint = start.clone();
         for (let i = 0; i < 1000; i++) {

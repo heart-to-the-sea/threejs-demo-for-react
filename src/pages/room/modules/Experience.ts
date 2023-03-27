@@ -33,13 +33,14 @@ export class Exprience {
         this.resource = new Resource();
         this.sizes.on("resize", () => this.resize());
         this.times.on("update", () => this.update());
-        console.log(this.scene)
+        console.log(this.scene);
     }
     resize() {
         this.camera.resize();
         this.renderer.resize();
     }
     update() {
+        this.resource.update();
         this.camera.update();
         this.renderer.update();
     }
