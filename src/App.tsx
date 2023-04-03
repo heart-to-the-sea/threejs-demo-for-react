@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import { Index } from "./pages/index";
 import Room from "./pages/room/Page";
 import Sphere from "./pages/sphere/Page";
@@ -15,6 +15,13 @@ import Hyperbolic from "./pages/hyperblic/Page";
 import LongXi from "./pages/gltf-longxi/Page";
 import Triangles from "./pages/triangles/Page";
 import MeteorImpact from "./pages/meteorImpact/Page";
+import DingDaEr from "./pages/dingdaer/Page";
+import Water from "./pages/water/Page";
+import Animationp from "./pages/animation/Page";
+import Earch from "./pages/earth/Page";
+import Crosswire from "./pages/crosswire/Page";
+import Volumetric from "./pages/volumetric/Page";
+import CityNanjing from "./pages/city-nanjing/Page";
 function App() {
     return (
         <div className="App">
@@ -41,7 +48,18 @@ function App() {
             {/* 模型消失效果 */}
             {/* <Triangles /> */}
             {/* 流星撞击 */}
-            <MeteorImpact />
+            {/* <MeteorImpact /> */}
+            {/* 丁达尔效果 失败 */}
+            {/* <DingDaEr /> */}
+            {/* 海洋效果 */}
+            {/* <Water /> */}
+            {/* <Animationp /> */}
+            {/* 地球 */}
+            {/* <Earch /> */}
+            {/* 实例化方格 */}
+            {/* <Crosswire /> */}
+            {/* <Volumetric /> */}
+            <CityNanjing />
         </div>
     );
 }
