@@ -36,11 +36,6 @@ export class Exprience {
         this.resource = new Resource();
         this.sizes.on("resize", () => this.resize());
         this.times.on("update", () => this.update());
-        this.mouses.on("mouse", () => this.mouse());
-        console.log(this.scene);
-    }
-    mouse() {
-        this.resource.mouse();
     }
     resize() {
         this.camera.resize();

@@ -52,12 +52,18 @@ export default class ShaderBox {
     updateDateTexture() {
         let { data } = this.dataTexture.image;
         for (let i = 0; i < data.length / 4; i++) {
-            let r = Math.random() * 10;
             const stride = i * 4;
             data[stride] *= 0.99;
             data[stride + 1] *= 0.99;
-            data[stride + 2] *= 0.99;
-            data[stride + 3] = 1;
+        }
+        let gridMouseX = 32 * this.mouses.x;
+        let gridMouseY = 32 * (1 - this.mouses.y);
+        let maxDist = 8;
+        for (let i = 0; i < 32; i++) {
+            for (let j = 0; i < 32; j++) {
+                let distance = (gridMouseX - i) ** 2 + (gridMouseY - j) ** 2;
+                let maxDIstS = maxDist ** 2;
+            }
         }
         this.dataTexture.needsUpdate = true;
     }
@@ -80,9 +86,6 @@ export default class ShaderBox {
 
         const mesh = new THREE.Mesh(geometry, material);
         return mesh;
-    }
-    mouse() {
-        console.log(this.mouses);
     }
     update() {
         this.dataTexture && this.updateDateTexture();
