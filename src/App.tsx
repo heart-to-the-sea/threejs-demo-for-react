@@ -22,6 +22,8 @@ import Earch from "./pages/earth/Page";
 import Crosswire from "./pages/crosswire/Page";
 import Volumetric from "./pages/volumetric/Page";
 import CityNanjing from "./pages/city-nanjing/Page";
+import Hands from "./pages/hands/Page";
+import PixDistortion from "./pages/pix-distortion/Page";
 function App() {
     return (
         <div className="App">
@@ -59,7 +61,12 @@ function App() {
             {/* 实例化方格 */}
             {/* <Crosswire /> */}
             {/* <Volumetric /> */}
-            <CityNanjing />
+            {/* 城市 */}
+            {/* <CityNanjing /> */}
+            {/* 一堆人 */}
+            {/* <Hands /> */}
+            {/* 像素失真 */}
+            <PixDistortion />
         </div>
     );
 }
