@@ -10,6 +10,10 @@ export default class ShaderBox {
     box: THREE.Mesh;
     mouses: Mouse;
     dataTexture: THREE.DataTexture;
+    dataTextureData = {
+        width: 128,
+        height: 128,
+    };
     constructor() {
         this.experience = new Exprience();
 
@@ -19,8 +23,8 @@ export default class ShaderBox {
         this.experience.scene.add(this.box);
     }
     getDataTexture() {
-        const width = 32;
-        const height = 32;
+        const width = this.dataTextureData.width;
+        const height = this.dataTextureData.height;
         const size = width * height;
         const data = new Float32Array(4 * size);
         // const color = new THREE.Color(0xffffff);
@@ -30,7 +34,7 @@ export default class ShaderBox {
         // const b = Math.floor(color.b * 255);
 
         for (let i = 0; i < size; i++) {
-            let r = Math.random() * 50;
+            let r = Math.random() * 10;
             const stride = i * 4;
             data[stride] = r;
             data[stride + 1] = r;
@@ -56,15 +60,26 @@ export default class ShaderBox {
             data[stride] *= 0.99;
             data[stride + 1] *= 0.99;
         }
-        let gridMouseX = 32 * this.mouses.x;
-        let gridMouseY = 32 * (1 - this.mouses.y);
+        let gridMouseX = this.dataTextureData.width * this.mouses.x;
+        let gridMouseY = this.dataTextureData.height * (1 - this.mouses.y);
         let maxDist = 8;
-        for (let i = 0; i < 32; i++) {
-            for (let j = 0; i < 32; j++) {
+        for (let i = 0; i < this.dataTextureData.width; i++) {
+            for (let j = 0; j < this.dataTextureData.height; j++) {
                 let distance = (gridMouseX - i) ** 2 + (gridMouseY - j) ** 2;
-                let maxDIstS = maxDist ** 2;
+                let maxDistSq = maxDist ** 2;
+                if (distance < maxDistSq) {
+                    let index = 4 * (i + this.dataTextureData.width * j);
+                    let power = Math.sqrt(distance) / maxDist;
+                    if (distance === 0) {
+                        power = 1;
+                    }
+                    data[index] += 100 * this.mouses.vX * power;
+                    data[index + 1] += 100 * this.mouses.vY * power;
+                }
             }
         }
+        this.mouses.vX *= 0.9;
+        this.mouses.vY *= 0.9;
         this.dataTexture.needsUpdate = true;
     }
     getBox() {
@@ -86,6 +101,9 @@ export default class ShaderBox {
 
         const mesh = new THREE.Mesh(geometry, material);
         return mesh;
+    }
+    mouse() {
+        this.dataTexture && this.updateDateTexture();
     }
     update() {
         this.dataTexture && this.updateDateTexture();

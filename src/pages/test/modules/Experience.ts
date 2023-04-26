@@ -4,13 +4,11 @@ import Renderer from "./Renderer";
 import Resource from "./Resource";
 import Sizes from "./utils/Sizes";
 import Times from "./utils/Time";
-import { Mouse } from "./utils/Mouse";
 export class Exprience {
     static instance: Exprience;
 
     sizes!: Sizes;
     times!: Times;
-    mouses!: Mouse;
     camera!: Camera;
     scene!: THREE.Scene;
     renderer!: Renderer;
@@ -28,7 +26,6 @@ export class Exprience {
 
         this.sizes = new Sizes();
         this.times = new Times();
-        this.mouses = new Mouse();
 
         this.scene = new THREE.Scene();
         this.camera = new Camera();
@@ -36,11 +33,7 @@ export class Exprience {
         this.resource = new Resource();
         this.sizes.on("resize", () => this.resize());
         this.times.on("update", () => this.update());
-        this.mouses.on("mouse", () => this.mouse());
         console.log(this.scene);
-    }
-    mouse() {
-        this.resource.mouse();
     }
     resize() {
         this.camera.resize();

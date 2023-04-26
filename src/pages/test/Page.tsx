@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Exprience } from "./modules/Experience";
-export default function PixDistortion() {
+export default function Test() {
     const canvas = useRef<HTMLCanvasElement | null>(null);
     useEffect(() => {
         if (canvas.current) {
@@ -8,8 +8,11 @@ export default function PixDistortion() {
         }
     }, [canvas]);
     return (
-        <div style={{ width: "100vw", height: "100vh" }}>
-            <canvas ref={canvas}></canvas>
+        <div style={{ width: "100%", height: "99vh" }}>
+            <canvas
+                ref={canvas}
+                style={{ width: "100%", height: "100%" }}
+            ></canvas>
         </div>
     );
 }

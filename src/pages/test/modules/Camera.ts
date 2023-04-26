@@ -10,31 +10,17 @@ export default class Camera {
     control!: OrbitControls;
     canvas!: HTMLCanvasElement;
 
-    perspectiveCamera!: THREE.PerspectiveCamera | THREE.OrthographicCamera;
+    perspectiveCamera!: THREE.PerspectiveCamera;
     constructor() {
         this.experience = new Exprience();
         this.scene = this.experience.scene;
         this.canvas = this.experience.canvas;
         this.sizes = this.experience.sizes;
-        this.perspectiveCamera = this.createOrthographicCamera();
+        this.perspectiveCamera =
+            this.createPerspectiveCamera();
         this.setScene();
         this.control = this.createOrbitControl();
     }
-    // 正交相机
-    createOrthographicCamera() {
-        const frustumSize = 10;
-        const camera = new THREE.OrthographicCamera(
-            frustumSize / -2, //
-            frustumSize / 2, //
-            frustumSize / 2, //
-            frustumSize / -2,
-            -1000, //
-            1000
-        );
-        camera.position.set(0, 0, 20);
-        return camera;
-    }
-    // 透视相机
     createPerspectiveCamera() {
         const camera = new THREE.PerspectiveCamera(
             45,
@@ -46,7 +32,10 @@ export default class Camera {
         return camera;
     }
     createOrbitControl() {
-        const control = new OrbitControls(this.perspectiveCamera, this.canvas);
+        const control = new OrbitControls(
+            this.perspectiveCamera,
+            this.canvas
+        );
         // control.enableDamping = true;
         control.enableZoom = true;
         return control;
@@ -55,10 +44,7 @@ export default class Camera {
         this.scene.add(this.perspectiveCamera);
     }
     resize() {
-        if (this.perspectiveCamera instanceof THREE.PerspectiveCamera) {
-            this.perspectiveCamera.aspect = this.sizes.aspect;
-        } else {
-        }
+        this.perspectiveCamera.aspect = this.sizes.aspect;
         this.perspectiveCamera.updateProjectionMatrix();
     }
     update() {

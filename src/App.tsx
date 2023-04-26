@@ -24,6 +24,7 @@ import Volumetric from "./pages/volumetric/Page";
 import CityNanjing from "./pages/city-nanjing/Page";
 import Hands from "./pages/hands/Page";
 import PixDistortion from "./pages/pix-distortion/Page";
+import Test from "./pages/test/Page";
 function App() {
     return (
         <div className="App">
@@ -66,7 +67,8 @@ function App() {
             {/* 一堆人 */}
             {/* <Hands /> */}
             {/* 像素失真 */}
-            <PixDistortion />
+            {/* <PixDistortion /> */}
+            <Test />
         </div>
     );
 }
