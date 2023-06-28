@@ -14,8 +14,8 @@ export default class ShaderBox {
         this.box = this.getBox();
         this.experience.scene.scene.add(this.box);
         this.experience.scene.scene.add(this.getLight());
-        this.experience.scene.scene.add(new THREE.BoxHelper(this.box));
-        this.getGltf();
+        // this.experience.scene.scene.add(new THREE.BoxHelper(this.box));
+        // this.getGltf();
     }
     getLight() {
         const light = new THREE.DirectionalLight(0xffffff, 1);

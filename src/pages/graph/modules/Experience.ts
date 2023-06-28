@@ -1,6 +1,5 @@
 import * as THREE from "three";
 import Camera from "./Camera";
-import PostProcessing from "./PostProcessing";
 import Renderer from "./Renderer";
 import Resource from "./Resource";
 import Sizes from "./utils/Sizes";
@@ -14,7 +13,6 @@ export class Exprience {
     scene!: THREE.Scene;
     renderer!: Renderer;
     resource!: Resource;
-    postProcessing!: PostProcessing;
     canvas!: HTMLCanvasElement;
     constructor(canvas?: HTMLCanvasElement) {
         if (Exprience.instance) {
@@ -33,20 +31,17 @@ export class Exprience {
         this.camera = new Camera();
         this.renderer = new Renderer();
         this.resource = new Resource();
-        this.postProcessing = new PostProcessing();
-        console.log(this.scene);
         this.sizes.on("resize", () => this.resize());
         this.times.on("update", () => this.update());
+        console.log(this.scene);
     }
     resize() {
         this.camera.resize();
         this.renderer.resize();
-        this.postProcessing.resize();
     }
     update() {
         this.resource.update();
         this.camera.update();
         this.renderer.update();
-        // this.postProcessing.update();
     }
 }

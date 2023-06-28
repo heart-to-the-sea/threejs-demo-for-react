@@ -4,7 +4,7 @@ import gsap from "gsap";
 import fs from "./shader/index.fs";
 import vs from "./shader/index.vs";
 // import "three/examples/jsm/libs/ammo.wasm";
-import Ammo from "ammojs-typed";
+// import Ammo from "ammojs-typed";
 const obj = {
     metadata: {},
     project: {
@@ -121,23 +121,23 @@ export default class ShaderBox {
         this.init();
     }
     init() {
-        Ammo().then((Ammo) => {
-            // 初始化物理世界
-            const collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(); // 检测碰撞
-            const dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration); // 管理凹凸碰撞算法
-            const overlappingPairCache = new Ammo.btDbvtBroadphase(); //                  物理规则约束（重力，力）
-            const solver = new Ammo.btSequentialImpulseConstraintSolver(); //             对应动态世界，可改变物理宇宙
-            const physicsUniverse = new Ammo.btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
-            physicsUniverse.setGravity(new Ammo.btVector3(0, -75, 0));
-            // 创建默认运动
-            const transform = new Ammo.btTransform();
-            transform.setIdentity();
-            transform.setOrigin(new Ammo.btVector3(this.box.position.x, this.box.position.y, this.box.position.z));
-            transform.setRotation(new Ammo.btQuaternion(0, 0, 0, 0)); // 设置旋转
-            const defaultMotionState = new Ammo.btDefaultMotionState(transform);
-            // 定义对象的碰撞几何体结构
-            const structColShape = '';
-        });
+        // Ammo().then((Ammo) => {
+        //     // 初始化物理世界
+        //     const collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(); // 检测碰撞
+        //     const dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration); // 管理凹凸碰撞算法
+        //     const overlappingPairCache = new Ammo.btDbvtBroadphase(); //                  物理规则约束（重力，力）
+        //     const solver = new Ammo.btSequentialImpulseConstraintSolver(); //             对应动态世界，可改变物理宇宙
+        //     const physicsUniverse = new Ammo.btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
+        //     physicsUniverse.setGravity(new Ammo.btVector3(0, -75, 0));
+        //     // 创建默认运动
+        //     const transform = new Ammo.btTransform();
+        //     transform.setIdentity();
+        //     transform.setOrigin(new Ammo.btVector3(this.box.position.x, this.box.position.y, this.box.position.z));
+        //     transform.setRotation(new Ammo.btQuaternion(0, 0, 0, 0)); // 设置旋转
+        //     const defaultMotionState = new Ammo.btDefaultMotionState(transform);
+        //     // 定义对象的碰撞几何体结构
+        //     const structColShape = '';
+        // });
     }
     getBox() {
         console.log("init standbox");

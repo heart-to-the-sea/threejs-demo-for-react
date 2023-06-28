@@ -25,6 +25,8 @@ import CityNanjing from "./pages/city-nanjing/Page";
 import Hands from "./pages/hands/Page";
 import PixDistortion from "./pages/pix-distortion/Page";
 import Test from "./pages/test/Page";
+import Demo from "./pages/demo/Page";
+import Graph from "./pages/graph/Page";
 function App() {
     return (
         <div className="App">
@@ -68,7 +70,9 @@ function App() {
             {/* <Hands /> */}
             {/* 像素失真 */}
             {/* <PixDistortion /> */}
-            <Test />
+            {/* <Test /> */}
+            {/* <Demo /> */}
+            <Graph />
         </div>
     );
 }

@@ -17,7 +17,7 @@ export default class Point {
         return light;
     }
     getAmblentLight() {
-        const light = new THREE.AmbientLight(0x4255ff, 0.5);
+        const light = new THREE.AmbientLight(0x4255ff, 0.3);
         return light;
     }
 }

@@ -8,7 +8,7 @@ export default class Axis {
         this.experience = new Exprience();
         this.scene = this.experience.scene.scene;
         // this.scene.add(this.getBox());
-        this.scene.add(this.getAxis());
+        // this.scene.add(this.getAxis());
         // this.scene.add(
         //     new THREE.AmbientLight(0xffffff, 1)
         // );
