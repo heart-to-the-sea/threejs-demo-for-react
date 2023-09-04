@@ -41,7 +41,7 @@ function App() {
             {/* 好看的光影效果 */}
             {/* <Noise /> */}
             {/* 视频和图片的集合 */}
-            {/* <Transparent /> */}
+            <Transparent />
             {/* 水滴效果 */}
             {/* <Tutorial /> */}
             {/* 基因螺旋 */}
@@ -72,7 +72,7 @@ function App() {
             {/* <PixDistortion /> */}
             {/* <Test /> */}
             {/* <Demo /> */}
-            <Graph />
+            {/* <Graph /> */}
         </div>
     );
 }

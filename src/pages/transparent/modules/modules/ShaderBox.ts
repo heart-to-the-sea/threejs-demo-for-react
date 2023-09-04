@@ -14,26 +14,15 @@ export default class ShaderBox {
         this.experience.scene.add(this.box);
     }
     getBox() {
-        console.log("init standbox");
-        const geometry2 = new BufferGeometry();
-        const bili = 480 / 820;
+        // const geometry2 = new BufferGeometry();
+        const biLi = 480 / 820;
         const geometry = new THREE.PlaneGeometry(
-            11.3 * bili,
+            11.3 * biLi,
             11.3,
             240 * 6,
             480 * 6
         );
-        //@ts-ignore
-        console.log(geometry.attributes.position.array);
-        geometry2.setAttribute(
-            "position",
 
-            new THREE.BufferAttribute(
-                //@ts-ignore
-                geometry.attributes.position.array,
-                3
-            )
-        );
         const material = new THREE.ShaderMaterial({
             uniforms: {
                 u_time: { value: 0 },

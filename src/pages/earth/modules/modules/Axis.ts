@@ -8,10 +8,8 @@ export default class Axis {
         this.experience = new Exprience();
         this.scene = this.experience.scene;
         // this.scene.add(this.getBox());
-        this.scene.add(this.getAxis());
-        this.scene.add(
-            new THREE.AmbientLight(0xffffff, 1)
-        );
+        // this.scene.add(this.getAxis());
+        // this.scene.add(new THREE.AmbientLight(0xffffff, 1));
     }
     getAxis() {
         const axis = new THREE.AxesHelper(100);

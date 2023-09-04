@@ -6,26 +6,14 @@ import EventEmitter from "events";
 import PostProcessing from "./PostProcessing";
 export default class AnimateControl extends EventEmitter {
     shaderImgFirst = [
-        new THREE.TextureLoader().load(
-            "/transparent/img/video-01-first.jpg"
-        ),
-        new THREE.TextureLoader().load(
-            "/transparent/img/video-02-first.jpg"
-        ),
-        new THREE.TextureLoader().load(
-            "/transparent/img/video-03-first.jpg"
-        ),
+        new THREE.TextureLoader().load("/transparent/img/video-01-first.jpg"),
+        new THREE.TextureLoader().load("/transparent/img/video-02-first.jpg"),
+        new THREE.TextureLoader().load("/transparent/img/video-03-first.jpg"),
     ];
     shaderImgEnd = [
-        new THREE.TextureLoader().load(
-            "/transparent/img/video-01-end.jpg"
-        ),
-        new THREE.TextureLoader().load(
-            "/transparent/img/video-02-end.jpg"
-        ),
-        new THREE.TextureLoader().load(
-            "/transparent/img/video-03-end.jpg"
-        ),
+        new THREE.TextureLoader().load("/transparent/img/video-01-end.jpg"),
+        new THREE.TextureLoader().load("/transparent/img/video-02-end.jpg"),
+        new THREE.TextureLoader().load("/transparent/img/video-03-end.jpg"),
     ];
     shaderImgIndex = 0;
     exprience: Exprience;
@@ -42,19 +30,12 @@ export default class AnimateControl extends EventEmitter {
     }
     // 扩散动画
     first() {
-        if (
-            this.model.box.material instanceof
-            THREE.ShaderMaterial
-        ) {
-            this.model.box.material.uniforms.u_texture.value =
-                this.shaderImgEnd[this.shaderImgIndex];
-            gsap.to(
-                this.model.box.material.uniforms.u_scale,
-                {
-                    value: 10,
-                    duration: 5,
-                }
-            );
+        if (this.model.box.material instanceof THREE.ShaderMaterial) {
+            this.model.box.material.uniforms.u_texture.value = this.shaderImgEnd[this.shaderImgIndex];
+            gsap.to(this.model.box.material.uniforms.u_scale, {
+                value: 10,
+                duration: 5,
+            });
             gsap.to(this.postProcess.unealBlommPass, {
                 threshold: 0,
                 duration: 5,
@@ -68,19 +49,12 @@ export default class AnimateControl extends EventEmitter {
     }
     // 收敛动画
     end() {
-        if (
-            this.model.box.material instanceof
-            THREE.ShaderMaterial
-        ) {
-            this.model.box.material.uniforms.u_texture.value =
-                this.shaderImgFirst[this.shaderImgIndex];
-            gsap.to(
-                this.model.box.material.uniforms.u_scale,
-                {
-                    value: 0,
-                    duration: 5,
-                }
-            );
+        if (this.model.box.material instanceof THREE.ShaderMaterial) {
+            this.model.box.material.uniforms.u_texture.value = this.shaderImgFirst[this.shaderImgIndex];
+            gsap.to(this.model.box.material.uniforms.u_scale, {
+                value: 0,
+                duration: 5,
+            });
             gsap.to(this.postProcess.unealBlommPass, {
                 threshold: 1,
                 duration: 5,

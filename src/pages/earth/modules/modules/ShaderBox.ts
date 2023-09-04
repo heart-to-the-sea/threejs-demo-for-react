@@ -25,8 +25,8 @@ export default class ShaderBox {
     getGroup() {
         this.box = this.getBox();
         const group = new THREE.Group();
-        this.points.push(this.getPoint(50.22077, 50.22077));
-        this.points.push(this.getPoint(60.22077, 51.033));
+        this.points.push(this.getPoint(1.92077, 2.0177));
+        this.points.push(this.getPoint(1.22077, 2.033));
         group.add(this.box);
         this.points.forEach((point) => {
             group.add(point);
@@ -54,7 +54,8 @@ export default class ShaderBox {
             fragmentShader: fs,
             vertexShader: vs,
         });
-        console.log(material);
+        // console.log(material);
+        // const material = new THREE.MeshBasicMaterial({color:"#ffffff"})
         const mesh = new THREE.Mesh(geometry, material);
         return mesh;
     }
